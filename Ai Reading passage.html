@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Technology — Reading Lesson</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind theme tweak for soft palette
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a'
+            },
+            mint: {
+              50: '#f0fdf9',
+              100: '#ccfbef',
+              200: '#99f6e4',
+              300: '#5eead4',
+              400: '#2dd4bf',
+              500: '#14b8a6',
+            },
+            sand: {
+              50: '#faf7f2',
+              100: '#f5efe4',
+              200: '#efe6d6'
+            }
+          },
+          boxShadow: {
+            soft: '0 10px 25px -10px rgba(30, 64, 175, 0.25)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+    }
+    /* Print-friendly tweaks */
+    @media print {
+      .no-print { display: none !important; }
+      body {
+        background: #ffffff !important;
+      }
+      .card, .reading, .before-box {
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+      }
+      a { text-decoration: none; color: #000 !important; }
+      .answer-feedback { color: #000 !important; }
+      .option-label {
+        border: 1px solid #000 !important;
+      }
+    }
+    /* Focus ring for keyboard accessibility */
+    .focus-ring:focus {
+      outline: 3px solid rgba(37, 99, 235, 0.6);
+      outline-offset: 3px;
+    }
+    /* Smooth transitions */
+    .transition-base {
+      transition: all 200ms ease;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-sand-50 via-white to-mint-50 text-slate-800">
+  <header role="banner" class="no-print">
+    <div class="max-w-5xl mx-auto px-6 pt-8">
+      <div class="flex items-start md:items-center justify-between gap-4 flex-col md:flex-row">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary-500 to-mint-500 flex items-center justify-center text-white shadow-soft">
+            <span aria-hidden="true" class="text-2xl font-extrabold">AI</span>
+          </div>
+          <div>
+            <h1 class="text-2xl md:text-3xl font-extrabold text-slate-900" aria-label="AI Technology — Reading Lesson">
+              AI Technology — Reading Lesson
+            </h1>
+            <p class="text-slate-600">Level: A2 • Reading, prediction, skimming, scanning</p>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <button id="printBtn" class="focus-ring transition-base px-4 py-2 rounded-xl bg-primary-600 text-white hover:bg-primary-700 shadow-soft"
+            aria-label="Print lesson" title="Print lesson (opens print dialog)">
+            Print lesson
+          </button>
+          <a href="#quiz" class="focus-ring transition-base px-4 py-2 rounded-xl bg-white text-primary-700 border border-primary-200 hover:bg-primary-50"
+            aria-label="Skip to quiz">
+            Skip to quiz
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main role="main" class="max-w-5xl mx-auto px-6 py-8">
+    <!-- Hero / Image -->
+    <section class="card overflow-hidden rounded-3xl shadow-soft bg-white mb-8" aria-labelledby="imageTitle">
+      <div class="grid md:grid-cols-2">
+        <div class="p-6 md:p-8 flex flex-col justify-center">
+          <h2 id="imageTitle" class="text-xl md:text-2xl font-extrabold text-slate-900 mb-2">Technology in Our Daily Life</h2>
+          <p class="text-slate-600">
+            In this lesson, you will read a short text about AI technology and answer questions. Use the steps to help your reading.
+          </p>
+        </div>
+        <figure class="relative">
+          <img src="https://images.unsplash.com/photo-1507149833265-60c372daea22?q=80&w=1200&auto=format&fit=crop"
+               alt="A robot hand touching a human hand with a soft light background"
+               class="w-full h-64 md:h-full object-cover" />
+          <figcaption class="sr-only">Robot hand and human hand close together.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Before you read -->
+    <section aria-labelledby="before" class="before-box rounded-3xl bg-white shadow-soft border border-primary-100 p-6 md:p-8 mb-8">
+      <h2 id="before" class="text-xl font-extrabold text-primary-800 mb-4">Before you read</h2>
+      <ul class="grid md:grid-cols-2 gap-3 text-slate-700">
+        <li class="p-4 rounded-2xl bg-primary-50">Prediction: Look at the picture. What might the text say about AI?</li>
+        <li class="p-4 rounded-2xl bg-mint-50">Skimming: Read the first and last sentences quickly. What is the main idea?</li>
+        <li class="p-4 rounded-2xl bg-primary-50">Scanning: Find two benefits of AI. Find one risk or problem.</li>
+        <li class="p-4 rounded-2xl bg-mint-50">Prior knowledge: Where do you see AI in your life?</li>
+      </ul>
+    </section>
+
+    <!-- Reading passage -->
+    <article aria-labelledby="reading" class="reading rounded-3xl bg-white shadow-soft border border-primary-100 p-6 md:p-8 mb-8">
+      <h2 id="reading" class="text-xl font-extrabold text-primary-800 mb-4">Reading</h2>
+      <p class="text-lg leading-8 text-slate-800">
+        Artificial intelligence, or AI, is a kind of computer technology. It helps machines learn from data. AI can work fast and make simple decisions. Many people use AI every day. It helps us search the internet and choose music. It can also help doctors look at images and find problems. In schools, AI can give practice and feedback to students. In offices, it can do boring tasks and save time. AI is not perfect. Sometimes it makes mistakes. People must check the results and use it carefully. AI should be fair and safe for everyone. With good rules and smart use, AI can make life easier for many people.
+      </p>
+    </article>
+
+    <!-- Quiz -->
+    <section id="quiz" aria-labelledby="post" class="rounded-3xl bg-white shadow-soft border border-primary-100 p-6 md:p-8">
+      <div class="flex items-center justify-between mb-4">
+        <h2 id="post" class="text-xl font-extrabold text-primary-800">Post-reading Quiz</h2>
+        <div class="text-sm text-slate-600" aria-live="polite" id="scoreLive" aria-atomic="true"></div>
+      </div>
+      <p class="text-slate-700 mb-6">Choose the best answer. Then select “Check Answers”. You can use the “Try Again” button to reset.</p>
+
+      <form id="quizForm" role="form" aria-describedby="quizHelp" class="space-y-6">
+        <span id="quizHelp" class="sr-only">Use arrow keys to select options. Press tab to move between questions.</span>
+
+        <!-- Helper function in JS will evaluate based on data-answer attribute. -->
+        <div class="grid gap-6">
+          <!-- Q1 -->
+          <fieldset class="p-4 rounded-2xl border border-slate-200">
+            <legend class="font-semibold mb-3">1) What is AI?</legend>
+            <div class="grid gap-2">
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q1" value="a" class="focus-ring" /> A kind of music
+              </label>
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q1" value="b" class="focus-ring" /> A kind of computer technology
+              </label>
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q1" value="c" class="focus-ring" /> A new sport
+              </label>
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q1" value="d" class="focus-ring" /> A type of food
+              </label>
+            </div>
+            <div class="answer-feedback mt-3 text-sm" aria-live="polite"></div>
+          </fieldset>
+
+          <!-- Q2 -->
+          <fieldset class="p-4 rounded-2xl border border-slate-200">
+            <legend class="font-semibold mb-3">2) What does AI help machines do?</legend>
+            <div class="grid gap-2">
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q2" value="a" class="focus-ring" /> Sleep longer
+              </label>
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q2" value="b" class="focus-ring" /> Learn from data
+              </label>
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q2" value="c" class="focus-ring" /> Grow bigger
+              </label>
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q2" value="d" class="focus-ring" /> Travel the world
+              </label>
+            </div>
+            <div class="answer-feedback mt-3 text-sm" aria-live="polite"></div>
+          </fieldset>
+
+          <!-- Q3 -->
+          <fieldset class="p-4 rounded-2xl border border-slate-200">
+            <legend class="font-semibold mb-3">3) Where do many people use AI every day?</legend>
+            <div class="grid gap-2">
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q3" value="a" class="focus-ring" /> Only in the hospital
+              </label>
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q3" value="b" class="focus-ring" /> Only at the airport
+              </label>
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q3" value="c" class="focus-ring" /> When searching the internet and choosing music
+              </label>
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q3" value="d" class="focus-ring" /> Only in space
+              </label>
+            </div>
+            <div class="answer-feedback mt-3 text-sm" aria-live="polite"></div>
+          </fieldset>
+
+          <!-- Q4 -->
+          <fieldset class="p-4 rounded-2xl border border-slate-200">
+            <legend class="font-semibold mb-3">4) How can AI help doctors?</legend>
+            <div class="grid gap-2">
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q4" value="a" class="focus-ring" /> By cooking meals for patients
+              </label>
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q4" value="b" class="focus-ring" /> By looking at images and finding problems
+              </label>
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q4" value="c" class="focus-ring" /> By driving buses
+              </label>
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q4" value="d" class="focus-ring" /> By selling tickets
+              </label>
+            </div>
+            <div class="answer-feedback mt-3 text-sm" aria-live="polite"></div>
+          </fieldset>
+
+          <!-- Q5 -->
+          <fieldset class="p-4 rounded-2xl border border-slate-200">
+            <legend class="font-semibold mb-3">5) How can AI help students?</legend>
+            <div class="grid gap-2">
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q5" value="a" class="focus-ring" /> By giving practice and feedback
+              </label>
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q5" value="b" class="focus-ring" /> By closing schools
+              </label>
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q5" value="c" class="focus-ring" /> By buying books for teachers
+              </label>
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q5" value="d" class="focus-ring" /> By painting classrooms
+              </label>
+            </div>
+            <div class="answer-feedback mt-3 text-sm" aria-live="polite"></div>
+          </fieldset>
+
+          <!-- Q6 -->
+          <fieldset class="p-4 rounded-2xl border border-slate-200">
+            <legend class="font-semibold mb-3">6) What kind of tasks can AI do in offices?</legend>
+            <div class="grid gap-2">
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q6" value="a" class="focus-ring" /> Boring tasks that save time
+              </label>
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q6" value="b" class="focus-ring" /> Playing games with staff
+              </label>
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q6" value="c" class="focus-ring" /> Building houses
+              </label>
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q6" value="d" class="focus-ring" /> Cooking lunch
+              </label>
+            </div>
+            <div class="answer-feedback mt-3 text-sm" aria-live="polite"></div>
+          </fieldset>
+
+          <!-- Q7 -->
+          <fieldset class="p-4 rounded-2xl border border-slate-200">
+            <legend class="font-semibold mb-3">7) Is AI always perfect?</legend>
+            <div class="grid gap-2">
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q7" value="a" class="focus-ring" /> Yes, it never fails
+              </label>
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q7" value="b" class="focus-ring" /> No, it sometimes makes mistakes
+              </label>
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q7" value="c" class="focus-ring" /> Only at night
+              </label>
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q7" value="d" class="focus-ring" /> Only on weekends
+              </label>
+            </div>
+            <div class="answer-feedback mt-3 text-sm" aria-live="polite"></div>
+          </fieldset>
+
+          <!-- Q8 -->
+          <fieldset class="p-4 rounded-2xl border border-slate-200">
+            <legend class="font-semibold mb-3">8) What should people do with AI results?</legend>
+            <div class="grid gap-2">
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q8" value="a" class="focus-ring" /> Ignore them
+              </label>
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q8" value="b" class="focus-ring" /> Always believe without checking
+              </label>
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q8" value="c" class="focus-ring" /> Check them and use AI carefully
+              </label>
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q8" value="d" class="focus-ring" /> Delete all results
+              </label>
+            </div>
+            <div class="answer-feedback mt-3 text-sm" aria-live="polite"></div>
+          </fieldset>
+
+          <!-- Q9 -->
+          <fieldset class="p-4 rounded-2xl border border-slate-200">
+            <legend class="font-semibold mb-3">9) What should AI be for everyone?</legend>
+            <div class="grid gap-2">
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q9" value="a" class="focus-ring" /> Fair and safe
+              </label>
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q9" value="b" class="focus-ring" /> Secret and confusing
+              </label>
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q9" value="c" class="focus-ring" /> Slow and old
+              </label>
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q9" value="d" class="focus-ring" /> Loud and scary
+              </label>
+            </div>
+            <div class="answer-feedback mt-3 text-sm" aria-live="polite"></div>
+          </fieldset>
+
+          <!-- Q10 -->
+          <fieldset class="p-4 rounded-2xl border border-slate-200">
+            <legend class="font-semibold mb-3">10) What is the writer’s main idea?</legend>
+            <div class="grid gap-2">
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q10" value="a" class="focus-ring" /> AI is only for doctors
+              </label>
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q10" value="b" class="focus-ring" /> AI can help in many ways but needs careful use
+              </label>
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q10" value="c" class="focus-ring" /> AI makes life harder for everyone
+              </label>
+              <label class="option-label flex items-center gap-3 p-3 rounded-xl border hover:bg-slate-50 transition-base">
+                <input type="radio" name="q10" value="d" class="focus-ring" /> We should stop using AI now
+              </label>
+            </div>
+            <div class="answer-feedback mt-3 text-sm" aria-live="polite"></div>
+          </fieldset>
+        </div>
+
+        <!-- Actions -->
+        <div class="mt-6 flex flex-wrap gap-3">
+          <button type="button" id="checkBtn" class="focus-ring transition-base px-5 py-3 rounded-xl bg-primary-600 text-white hover:bg-primary-700 shadow-soft"
+            aria-label="Check answers">Check Answers</button>
+          <button type="button" id="tryAgainBtn" class="focus-ring transition-base px-5 py-3 rounded-xl bg-white text-primary-700 border border-primary-200 hover:bg-primary-50"
+            aria-label="Try the quiz again">Try Again</button>
+          <div class="ml-auto flex items-center gap-2">
+            <span class="text-slate-600">Score:</span>
+            <span id="scoreBox" class="inline-flex items-center justify-center px-3 py-1 rounded-lg bg-mint-100 text-primary-800 font-semibold">0 / 10</span>
+          </div>
+        </div>
+
+        <!-- Overall feedback -->
+        <div id="overallFeedback" class="mt-4 text-slate-800 font-semibold" aria-live="polite" aria-atomic="true"></div>
+      </form>
+    </section>
+  </main>
+
+  <footer role="contentinfo" class="max-w-5xl mx-auto px-6 py-10 text-sm text-slate-600">
+    <p>Tip: Use the Before you read steps. After reading, complete the quiz. Click Print lesson to save as PDF.</p>
+  </footer>
+
+  <script>
+    // Accessibility: allow entire label click and set selected styles
+    const form = document.getElementById('quizForm');
+    const checkBtn = document.getElementById('checkBtn');
+    const tryAgainBtn = document.getElementById('tryAgainBtn');
+    const scoreBox = document.getElementById('scoreBox');
+    const overallFeedback = document.getElementById('overallFeedback');
+    const scoreLive = document.getElementById('scoreLive');
+    const printBtn = document.getElementById('printBtn');
+
+    // Answer key
+    const key = {
+      q1: 'b',
+      q2: 'b',
+      q3: 'c',
+      q4: 'b',
+      q5: 'a',
+      q6: 'a',
+      q7: 'b',
+      q8: 'c',
+      q9: 'a',
+      q10: 'b'
+    };
+
+    // Enhance selection visuals
+    function refreshOptionStyles() {
+      const fieldsets = form.querySelectorAll('fieldset');
+      fieldsets.forEach(fs => {
+        const inputs = fs.querySelectorAll('input[type="radio"]');
+        inputs.forEach(input => {
+          const label = input.closest('label');
+          if (!label) return;
+          if (input.checked) {
+            label.classList.add('bg-primary-50', 'border-primary-300');
+            label.classList.remove('bg-white');
+          } else {
+            label.classList.remove('bg-primary-50', 'border-primary-300');
+          }
+        });
+      });
+    }
+
+    form.addEventListener('change', (e) => {
+      if (e.target.matches('input[type="radio"]')) {
+        refreshOptionStyles();
+      }
+    });
+
+    // Check answers
+    checkBtn.addEventListener('click', () => {
+      let correct = 0;
+      const fieldsets = form.querySelectorAll('fieldset');
+      fieldsets.forEach((fs, index) => {
+        const name = 'q' + (index + 1);
+        const chosen = form.querySelector(`input[name="${name}"]:checked`);
+        const feedback = fs.querySelector('.answer-feedback');
+        // Clear any previous state
+        fs.querySelectorAll('label').forEach(l => {
+          l.classList.remove('ring-2', 'ring-red-300', 'ring-green-300');
+        });
+
+        if (!chosen) {
+          feedback.textContent = 'Please choose an answer.';
+          feedback.className = 'answer-feedback mt-3 text-sm text-slate-700';
+          return;
+        }
+
+        const isCorrect = chosen.value === key[name];
+        if (isCorrect) {
+          correct++;
+          feedback.textContent = 'Correct!';
+          feedback.className = 'answer-feedback mt-3 text-sm font-semibold text-emerald-700';
+          chosen.closest('label').classList.add('ring-2', 'ring-green-300');
+        } else {
+          feedback.textContent = 'Not correct. Check the reading again.';
+          feedback.className = 'answer-feedback mt-3 text-sm font-semibold text-rose-700';
+          chosen.closest('label').classList.add('ring-2', 'ring-red-300');
+          // also highlight the correct one
+          const correctInput = fs.querySelector(`input[name="${name}"][value="${key[name]}"]`);
+          if (correctInput) {
+            correctInput.closest('label').classList.add('ring-2', 'ring-green-300');
+          }
+        }
+      });
+
+      scoreBox.textContent = `${correct} / 10`;
+      let message = '';
+      if (correct === 10) message = 'Excellent! You understood the text very well.';
+      else if (correct >= 8) message = 'Great job! Just a few more to review.';
+      else if (correct >= 5) message = 'Nice effort. Read again and try to improve.';
+      else message = 'Keep trying. Read the text again and look for key words.';
+
+      overallFeedback.textContent = message;
+      scoreLive.textContent = `Your score is ${correct} out of 10.`;
+    });
+
+    // Try again
+    tryAgainBtn.addEventListener('click', () => {
+      const selected = form.querySelectorAll('input[type="radio"]:checked');
+      selected.forEach(i => i.checked = false);
+      form.querySelectorAll('.answer-feedback').forEach(el => {
+        el.textContent = '';
+        el.className = 'answer-feedback mt-3 text-sm';
+      });
+      form.querySelectorAll('label').forEach(l => {
+        l.classList.remove('ring-2', 'ring-red-300', 'ring-green-300', 'bg-primary-50', 'border-primary-300');
+      });
+      scoreBox.textContent = '0 / 10';
+      overallFeedback.textContent = '';
+      scoreLive.textContent = 'Quiz reset. You can try again.';
+    });
+
+    // Print
+    printBtn.addEventListener('click', () => {
+      window.print();
+    });
+
+    // Initialize styles
+    refreshOptionStyles();
+  </script>
+
+  <!--
+  Teacher Answer Key (Hidden)
+  Q1: b
+  Q2: b
+  Q3: c
+  Q4: b
+  Q5: a
+  Q6: a
+  Q7: b
+  Q8: c
+  Q9: a
+  Q10: b
+  -->
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'971cc79247ea0d4b',t:'MTc1NTYzOTMxNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
